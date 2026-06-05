@@ -199,7 +199,11 @@ export function PakmanSite({ lang }: { lang: Lang }) {
           <div className="flex items-center gap-3 md:gap-4">
             <a
               href={c.nav.switchHref}
-              className="text-xs tracking-[0.18em] uppercase text-canvas/80 hover:text-champagne transition-colors"
+              lang={lang === "en" ? "ar" : "en"}
+              dir={lang === "en" ? "rtl" : "ltr"}
+              className={`text-xs text-canvas/80 hover:text-champagne transition-colors ${
+                lang === "en" ? "font-arabic" : "tracking-[0.18em] uppercase"
+              }`}
             >
               {c.nav.switchLang}
             </a>
@@ -715,7 +719,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
                 <div key={id} className="space-y-2">
                   <Label
                     htmlFor={id}
-                    className="text-[10px] uppercase tracking-[0.22em] text-canvas/60"
+                    className="contact-label text-[10px] uppercase tracking-[0.22em] text-canvas/60"
                   >
                     {label}
                   </Label>
@@ -731,7 +735,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
             <div className="space-y-2">
               <Label
                 htmlFor="products"
-                className="text-[10px] uppercase tracking-[0.22em] text-canvas/60"
+                className="contact-label text-[10px] uppercase tracking-[0.22em] text-canvas/60"
               >
                 {c.quote.fields.products}
               </Label>
@@ -745,7 +749,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
             <div className="space-y-2">
               <Label
                 htmlFor="message"
-                className="text-[10px] uppercase tracking-[0.22em] text-canvas/60"
+                className="contact-label text-[10px] uppercase tracking-[0.22em] text-canvas/60"
               >
                 {c.quote.fields.message}
               </Label>
@@ -829,44 +833,49 @@ export function PakmanSite({ lang }: { lang: Lang }) {
           </div>
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-8">
             <div className="border-t border-white/10 pt-6">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-champagne">
+              <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
                 {lang === "en" ? "Location" : "الموقع"}
               </p>
-              <p className="mt-3 font-display text-lg text-canvas">{c.contact.location}</p>
+              <p className="contact-value mt-3 font-display text-lg text-canvas">
+                {c.contact.location}
+              </p>
             </div>
             <div className="border-t border-white/10 pt-6">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-champagne">
+              <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
                 {c.contact.phoneLabel}
               </p>
               <a
                 href={`tel:${c.contact.phone.replace(/\s/g, "")}`}
-                className="mt-3 font-display text-lg block text-canvas hover:text-champagne transition-colors"
+                className="contact-value mt-3 font-display text-lg block text-canvas hover:text-champagne transition-colors"
                 dir="ltr"
               >
                 {c.contact.phone}
               </a>
             </div>
             <div className="border-t border-white/10 pt-6">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-champagne">
+              <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
                 {c.contact.emailLabel}
               </p>
               <a
                 href={`mailto:${c.contact.email}`}
-                className="mt-3 font-display text-lg block text-canvas hover:text-champagne transition-colors"
+                className="contact-value mt-3 font-display text-lg block text-canvas hover:text-champagne transition-colors"
                 dir="ltr"
               >
                 {c.contact.email}
               </a>
             </div>
             <div className="border-t border-white/10 pt-6">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-champagne">WhatsApp</p>
+              <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
+                {c.contact.whatsapp}
+              </p>
               <a
                 href={`https://wa.me/${whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-2 font-display text-lg text-canvas hover:text-champagne transition-colors"
+                className="contact-value mt-3 inline-flex items-center gap-2 font-display text-lg text-canvas hover:text-champagne transition-colors"
+                dir="ltr"
               >
-                {c.contact.whatsapp}
+                {c.contact.phone}
               </a>
             </div>
           </div>
@@ -909,7 +918,14 @@ export function PakmanSite({ lang }: { lang: Lang }) {
         <div className="border-t border-white/10">
           <div className="container-x py-6 flex flex-wrap justify-between gap-3 text-xs text-concrete">
             <span>{c.footer.rights}</span>
-            <a href={c.nav.switchHref} className="hover:text-canvas transition-colors">
+            <a
+              href={c.nav.switchHref}
+              lang={lang === "en" ? "ar" : "en"}
+              dir={lang === "en" ? "rtl" : "ltr"}
+              className={`hover:text-canvas transition-colors ${
+                lang === "en" ? "font-arabic" : "tracking-[0.18em] uppercase"
+              }`}
+            >
               {c.nav.switchLang}
             </a>
           </div>

@@ -139,10 +139,11 @@
     letter-spacing: -0.005em;
   }
 
-  /* Arabic typography — IBM Plex Sans Arabic + Noto Kufi Arabic for premium feel */
+  /* Arabic typography — connected letters, natural spacing, no Latin tracking */
   :where([dir="rtl"]) body,
   :where([dir="rtl"]) {
-    font-family: "IBM Plex Sans Arabic", "Tajawal", "Segoe UI", system-ui, sans-serif;
+    font-family: "IBM Plex Sans Arabic", "Tajawal", "Noto Kufi Arabic", "Segoe UI", system-ui,
+      sans-serif;
     font-feature-settings: "kern", "liga", "calt";
     letter-spacing: 0;
     line-height: 1.8;
@@ -160,12 +161,27 @@
     word-spacing: 0.02em;
   }
   :where([dir="rtl"]) .eyebrow {
-    letter-spacing: 0.14em;
+    letter-spacing: 0;
+    text-transform: none;
     font-family: "IBM Plex Sans Arabic", "Tajawal", sans-serif;
     font-weight: 500;
   }
   :where([dir="rtl"]) p {
     font-weight: 400;
+  }
+
+  :where([dir="rtl"]) :where([class*="tracking-"], [class*="uppercase"]),
+  :where([dir="rtl"]) :where(.uppercase),
+  :where([lang="ar"]) {
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+
+  :where([dir="rtl"]) :where(a, button, label, input, textarea, p, span, li, h1, h2, h3, h4, h5),
+  :where([lang="ar"]) {
+    font-family: "IBM Plex Sans Arabic", "Tajawal", "Noto Kufi Arabic", "Segoe UI", system-ui,
+      sans-serif;
+    font-feature-settings: "kern", "liga", "calt";
   }
 
   h1,
@@ -474,62 +490,79 @@
 
 @media (max-width: 767px) {
   .site-nav-inner {
-    height: 4.75rem !important;
-    gap: 0.75rem;
+    height: 4.5rem !important;
+    gap: 0.65rem;
   }
 
   .site-logo {
-    height: 3.75rem !important;
+    height: 3.5rem !important;
     max-width: min(48vw, 12.5rem);
   }
 
   .mobile-menu-toggle {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .display-1 {
-    font-size: clamp(2.375rem, 10vw, 2.875rem);
-    line-height: 1.08;
-    letter-spacing: -0.026em;
+    font-size: clamp(2.15rem, 9.2vw, 2.62rem);
+    line-height: 1.07;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
   }
 
   [dir="rtl"] .display-1 {
-    font-size: clamp(2.4rem, 9.6vw, 2.85rem);
-    line-height: 1.35;
+    font-size: clamp(2.1rem, 8.8vw, 2.58rem);
+    line-height: 1.42;
     letter-spacing: 0;
+    word-spacing: 0;
   }
 
   .display-2 {
-    font-size: clamp(1.875rem, 8vw, 2.25rem);
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.65rem, 7.1vw, 2.05rem);
+    line-height: 1.15;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
   }
 
   [dir="rtl"] .display-2 {
-    font-size: clamp(2rem, 8vw, 2.35rem);
-    line-height: 1.34;
+    font-size: clamp(1.72rem, 7vw, 2.1rem);
+    line-height: 1.45;
     letter-spacing: 0;
+    word-spacing: 0;
   }
 
   .body-lg {
-    font-size: clamp(0.9375rem, 4vw, 1.0625rem);
-    line-height: 1.68;
+    max-width: 34rem;
+    font-size: clamp(0.93rem, 3.7vw, 1rem);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  [dir="rtl"] .body-lg {
+    line-height: 1.78;
+    word-spacing: 0;
   }
 
   .section-y {
-    padding-block: clamp(4rem, 13vw, 5.5rem);
+    padding-block: clamp(3.25rem, 10vw, 4.75rem);
   }
 
   .hero-container {
-    padding-top: 6.25rem;
-    padding-bottom: 4rem;
-    gap: 2rem;
+    padding-top: 5.55rem;
+    padding-bottom: 3.25rem;
+    gap: 1.45rem;
+  }
+
+  .hero-section .body-lg,
+  #quote .body-lg,
+  #location .body-lg {
+    margin-top: 1.2rem;
   }
 
   .hero-actions {
-    margin-top: 2rem;
-    gap: 0.8rem;
+    margin-top: 1.45rem;
+    gap: 0.65rem;
   }
 
   .hero-actions > * {
@@ -538,7 +571,7 @@
   }
 
   .hero-image-card {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1.16 / 1;
     border-radius: var(--radius-xl);
     background: oklch(0.06 0 0);
   }
@@ -556,7 +589,7 @@
   }
 
   .product-carousel-shell {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
   }
 
   .product-carousel-card .product-card-image {
@@ -569,7 +602,115 @@
   }
 
   #clients .container-x {
-    padding-block: clamp(4rem, 13vw, 5.5rem);
+    padding-block: clamp(3.25rem, 10vw, 4.6rem);
+  }
+
+  #clients .grid,
+  #work .grid,
+  #products .grid,
+  #quote > .container-x,
+  #contact > .container-x {
+    gap: 1.75rem;
+  }
+
+  #clients .mb-12 {
+    margin-bottom: 1.9rem;
+  }
+
+  #about .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem;
+  }
+
+  #about .mt-20 {
+    margin-top: 2.65rem;
+  }
+
+  #about .about-image-card {
+    min-height: 18.5rem;
+  }
+
+  #about .dark-card {
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  #products .mt-10,
+  #products .mt-14 {
+    margin-top: 1.65rem;
+  }
+
+  #products .product-carousel-shell {
+    margin-top: 1.1rem;
+  }
+
+  .product-carousel-card > div:last-child {
+    min-height: 4.3rem;
+    padding: 0.85rem;
+  }
+
+  #solutions .mt-16 {
+    margin-top: 2rem;
+  }
+
+  #solutions .solution-card {
+    padding: 1.25rem;
+  }
+
+  #solutions .heading-lg {
+    margin-top: 1rem;
+  }
+
+  #work .mt-14,
+  #work .mt-16 {
+    margin-top: 2rem;
+  }
+
+  #quote form {
+    padding: 1.25rem;
+  }
+
+  #quote form > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1.25rem;
+  }
+
+  #quote form .grid {
+    gap: 1.1rem;
+  }
+
+  #location .dark-card {
+    margin-top: 1.65rem;
+    padding: 1.25rem;
+  }
+
+  #location .dark-card .mt-5 {
+    margin-top: 0.85rem;
+  }
+
+  #location .dark-card .mt-8 {
+    margin-top: 1.25rem;
+  }
+
+  #contact .contact-label {
+    line-height: 1.45;
+  }
+
+  #contact .contact-value {
+    margin-top: 0.45rem;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  footer .container-x {
+    padding-block: 3.4rem;
+    gap: 2rem;
+  }
+
+  footer .mt-6 {
+    margin-top: 1.1rem;
+  }
+
+  footer .mt-5 {
+    margin-top: 1rem;
   }
 
   #work img {
@@ -580,8 +721,26 @@
 
 @media (min-width: 768px) and (max-width: 1023px) {
   [dir="rtl"] .display-1 {
-    font-size: clamp(3rem, 7vw, 3.4rem);
-    line-height: 1.32;
+    font-size: clamp(2.75rem, 6.6vw, 3.25rem);
+    line-height: 1.38;
+  }
+
+  .display-1 {
+    font-size: clamp(2.9rem, 6.4vw, 3.45rem);
+  }
+
+  .display-2 {
+    font-size: clamp(2rem, 4.8vw, 2.65rem);
+  }
+
+  .section-y {
+    padding-block: clamp(4.5rem, 8vw, 6.5rem);
+  }
+
+  .hero-container {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+    gap: 2.4rem;
   }
 
   .hero-image-card {
@@ -625,10 +784,38 @@ html {
 }
 
 /* Hairline override for legacy uses */
+[lang="ar"],
+[lang="ar"] * {
+  font-family: "IBM Plex Sans Arabic", "Tajawal", "Noto Kufi Arabic", "Segoe UI", system-ui,
+    sans-serif;
+  font-feature-settings: "kern", "liga", "calt";
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  word-spacing: 0;
+}
+
 [dir="rtl"] :where(.font-display, h1, h2, h3, h4) {
   font-family: "Noto Kufi Arabic", "IBM Plex Sans Arabic", "Tajawal", sans-serif;
   letter-spacing: 0;
   font-weight: 700;
+}
+
+[dir="rtl"] :where(.display-1, .display-2, .heading-lg, .body-lg, .font-display) {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+[dir="rtl"] :where(.contact-label, label) {
+  font-family: "IBM Plex Sans Arabic", "Tajawal", "Noto Kufi Arabic", sans-serif;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  line-height: 1.7;
+}
+
+[dir="rtl"] .contact-value {
+  font-family: "IBM Plex Sans Arabic", "Tajawal", "Noto Kufi Arabic", sans-serif;
+  letter-spacing: 0 !important;
+  line-height: 1.75;
 }
 
 [dir="rtl"] .display-1 {
@@ -647,8 +834,20 @@ html {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   [dir="rtl"] .display-1 {
-    font-size: clamp(3rem, 7vw, 3.4rem);
-    line-height: 1.32;
+    font-size: clamp(2.75rem, 6.6vw, 3.25rem);
+    line-height: 1.38;
+  }
+}
+
+@media (max-width: 767px) {
+  [dir="rtl"] .display-1 {
+    font-size: clamp(2.1rem, 8.8vw, 2.58rem);
+    line-height: 1.42;
+  }
+
+  [dir="rtl"] .display-2 {
+    font-size: clamp(1.72rem, 7vw, 2.1rem);
+    line-height: 1.45;
   }
 }
 

@@ -3,6 +3,7 @@ import { Logo } from "@/components/brand/Logo";
 
 export function Intro({ onDone, tagline }: { onDone: () => void; tagline: string }) {
   const [stage, setStage] = useState(0); // 0 small logo, 1 full logo, 2 tagline, 3 fading out
+  const isArabicTagline = /[\u0600-\u06FF]/.test(tagline);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -50,7 +51,11 @@ export function Intro({ onDone, tagline }: { onDone: () => void; tagline: string
           />
         </div>
         <p
-          className="text-center text-[10px] uppercase tracking-[0.34em] text-warm-gray transition-all duration-500"
+          lang={isArabicTagline ? "ar" : "en"}
+          dir={isArabicTagline ? "rtl" : "ltr"}
+          className={`text-center text-[10px] text-warm-gray transition-all duration-500 ${
+            isArabicTagline ? "font-arabic" : "uppercase tracking-[0.34em]"
+          }`}
           style={{
             opacity: stage >= 2 ? 1 : 0,
             transform: stage >= 2 ? "translateY(0)" : "translateY(8px)",

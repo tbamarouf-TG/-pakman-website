@@ -482,7 +482,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
                       alt={product.name}
                       loading="eager"
                       decoding="async"
-                      className="product-card-image absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.10]"
+                      className="product-card-image absolute inset-0 w-full h-full object-contain transition-transform duration-[1400ms] ease-out"
                     />
                     <div
                       className="pointer-events-none absolute inset-0 transition-opacity duration-500 opacity-60 group-hover:opacity-30"
@@ -541,7 +541,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
                         alt={product.name}
                         loading="eager"
                         decoding="async"
-                        className="product-card-image absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.10]"
+                        className="product-card-image absolute inset-0 w-full h-full object-contain transition-transform duration-[1400ms] ease-out"
                       />
                       <div
                         className="pointer-events-none absolute inset-0 transition-opacity duration-500 opacity-60 group-hover:opacity-30"
@@ -831,8 +831,8 @@ export function PakmanSite({ lang }: { lang: Lang }) {
           <div className="lg:col-span-5 reveal">
             <h2 className="display-2 text-canvas">{c.contact.title}</h2>
           </div>
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-8">
-            <div className="border-t border-white/10 pt-6">
+          <div className="contact-grid lg:col-span-7 grid sm:grid-cols-2 gap-8">
+            <div className="contact-card border-t border-white/10 pt-6">
               <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
                 {lang === "en" ? "Location" : "الموقع"}
               </p>
@@ -840,7 +840,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
                 {c.contact.location}
               </p>
             </div>
-            <div className="border-t border-white/10 pt-6">
+            <div className="contact-card border-t border-white/10 pt-6">
               <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
                 {c.contact.phoneLabel}
               </p>
@@ -852,7 +852,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
                 {c.contact.phone}
               </a>
             </div>
-            <div className="border-t border-white/10 pt-6">
+            <div className="contact-card border-t border-white/10 pt-6">
               <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
                 {c.contact.emailLabel}
               </p>
@@ -864,7 +864,7 @@ export function PakmanSite({ lang }: { lang: Lang }) {
                 {c.contact.email}
               </a>
             </div>
-            <div className="border-t border-white/10 pt-6">
+            <div className="contact-card border-t border-white/10 pt-6">
               <p className="contact-label text-[10px] uppercase tracking-[0.22em] text-champagne">
                 {c.contact.whatsapp}
               </p>

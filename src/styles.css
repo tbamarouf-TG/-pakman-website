@@ -436,6 +436,38 @@
   scroll-snap-stop: always;
 }
 
+.product-card-image {
+  object-fit: contain;
+  object-position: center;
+  padding: clamp(0.55rem, 1.4vw, 0.9rem);
+  background:
+    radial-gradient(circle at 50% 8%, oklch(from var(--champagne) l c h / 0.1), transparent 48%),
+    oklch(0.12 0.004 60);
+}
+
+.contact-grid {
+  align-items: start;
+}
+
+.contact-card {
+  min-height: 7rem;
+}
+
+.contact-label {
+  display: block;
+  margin: 0;
+}
+
+.contact-value {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.contact-value[dir="ltr"] {
+  unicode-bidi: plaintext;
+}
+
 @media (min-width: 768px) {
   .product-carousel-shell {
     --product-card-width: calc((100cqw - (var(--product-gap) * 2)) / 3);
@@ -535,34 +567,39 @@
   .body-lg {
     max-width: 34rem;
     font-size: clamp(0.93rem, 3.7vw, 1rem);
-    line-height: 1.6;
+    line-height: 1.68;
     text-wrap: pretty;
   }
 
   [dir="rtl"] .body-lg {
-    line-height: 1.78;
+    line-height: 1.9;
     word-spacing: 0;
   }
 
+  [dir="rtl"] :where(#about, #solutions, #work, #quote, #location, footer) p {
+    line-height: 1.9;
+    text-wrap: pretty;
+  }
+
   .section-y {
-    padding-block: clamp(3.25rem, 10vw, 4.75rem);
+    padding-block: clamp(4.15rem, 13vw, 5.6rem);
   }
 
   .hero-container {
-    padding-top: 5.55rem;
-    padding-bottom: 3.25rem;
-    gap: 1.45rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    gap: 2rem;
   }
 
   .hero-section .body-lg,
   #quote .body-lg,
   #location .body-lg {
-    margin-top: 1.2rem;
+    margin-top: 1.35rem;
   }
 
   .hero-actions {
-    margin-top: 1.45rem;
-    gap: 0.65rem;
+    margin-top: 1.75rem;
+    gap: 0.75rem;
   }
 
   .hero-actions > * {
@@ -584,12 +621,11 @@
   }
 
   .product-card-image {
-    padding: 0;
-    background: oklch(0.12 0.004 60);
+    padding: 0.7rem;
   }
 
   .product-carousel-shell {
-    padding-bottom: 0.35rem;
+    padding-bottom: 0.65rem;
   }
 
   .product-carousel-card .product-card-image {
@@ -602,7 +638,7 @@
   }
 
   #clients .container-x {
-    padding-block: clamp(3.25rem, 10vw, 4.6rem);
+    padding-block: clamp(4.15rem, 13vw, 5.6rem);
   }
 
   #clients .grid,
@@ -610,19 +646,19 @@
   #products .grid,
   #quote > .container-x,
   #contact > .container-x {
-    gap: 1.75rem;
+    gap: 2.25rem;
   }
 
   #clients .mb-12 {
-    margin-bottom: 1.9rem;
+    margin-bottom: 2.25rem;
   }
 
   #about .space-y-6 > :not([hidden]) ~ :not([hidden]) {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
   }
 
   #about .mt-20 {
-    margin-top: 2.65rem;
+    margin-top: 3.2rem;
   }
 
   #about .about-image-card {
@@ -630,17 +666,17 @@
   }
 
   #about .dark-card {
-    gap: 1rem;
-    padding: 1.25rem;
+    gap: 1.2rem;
+    padding: 1.35rem;
   }
 
   #products .mt-10,
   #products .mt-14 {
-    margin-top: 1.65rem;
+    margin-top: 2rem;
   }
 
   #products .product-carousel-shell {
-    margin-top: 1.1rem;
+    margin-top: 1.3rem;
   }
 
   .product-carousel-card > div:last-child {
@@ -649,11 +685,11 @@
   }
 
   #solutions .mt-16 {
-    margin-top: 2rem;
+    margin-top: 2.6rem;
   }
 
   #solutions .solution-card {
-    padding: 1.25rem;
+    padding: 1.45rem;
   }
 
   #solutions .heading-lg {
@@ -662,24 +698,24 @@
 
   #work .mt-14,
   #work .mt-16 {
-    margin-top: 2rem;
+    margin-top: 2.6rem;
   }
 
   #quote form {
-    padding: 1.25rem;
+    padding: 1.45rem;
   }
 
   #quote form > :not([hidden]) ~ :not([hidden]) {
-    margin-top: 1.25rem;
+    margin-top: 1.45rem;
   }
 
   #quote form .grid {
-    gap: 1.1rem;
+    gap: 1.3rem;
   }
 
   #location .dark-card {
-    margin-top: 1.65rem;
-    padding: 1.25rem;
+    margin-top: 2rem;
+    padding: 1.45rem;
   }
 
   #location .dark-card .mt-5 {
@@ -695,9 +731,18 @@
   }
 
   #contact .contact-value {
-    margin-top: 0.45rem;
+    margin-top: 0.55rem;
     font-size: 1rem;
-    line-height: 1.65;
+    line-height: 1.7;
+  }
+
+  #contact .contact-grid {
+    gap: 1.85rem;
+  }
+
+  #contact .contact-card {
+    min-height: 0;
+    padding-top: 1.15rem;
   }
 
   footer .container-x {
@@ -816,6 +861,16 @@ html {
   font-family: "IBM Plex Sans Arabic", "Tajawal", "Noto Kufi Arabic", sans-serif;
   letter-spacing: 0 !important;
   line-height: 1.75;
+}
+
+[dir="rtl"] .contact-card,
+[dir="rtl"] .contact-label,
+[dir="rtl"] .contact-value {
+  text-align: right;
+}
+
+[dir="rtl"] .contact-value[dir="ltr"] {
+  text-align: right;
 }
 
 [dir="rtl"] .display-1 {

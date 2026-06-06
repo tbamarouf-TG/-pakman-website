@@ -608,20 +608,22 @@
   }
 
   .hero-image-card {
-    aspect-ratio: 1.16 / 1;
+    aspect-ratio: 16 / 11;
     border-radius: var(--radius-xl);
-    background: oklch(0.06 0 0);
+    background: transparent;
   }
 
   .hero-product-image,
-  .mobile-contain-image,
-  .product-card-image {
-    object-fit: contain;
+  .mobile-contain-image {
+    object-fit: cover;
     object-position: center;
   }
 
   .product-card-image {
-    padding: 0.7rem;
+    object-fit: contain;
+    object-position: center;
+    padding: 0;
+    background: transparent;
   }
 
   .product-carousel-shell {
@@ -662,7 +664,8 @@
   }
 
   #about .about-image-card {
-    min-height: 18.5rem;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
   }
 
   #about .dark-card {
@@ -759,8 +762,9 @@
   }
 
   #work img {
-    object-fit: contain;
-    background: oklch(0.08 0 0);
+    object-fit: cover;
+    object-position: center;
+    background: transparent;
   }
 }
 
@@ -789,13 +793,14 @@
   }
 
   .hero-image-card {
-    background: oklch(0.06 0 0);
+    background: transparent;
   }
 
-  .hero-product-image,
   .product-card-image {
     object-fit: contain;
     object-position: center;
+    padding: 0;
+    background: transparent;
   }
 }
 
